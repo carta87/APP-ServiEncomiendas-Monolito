@@ -1,0 +1,7 @@
+{
+  "TWILIO_ACCOUNT_SID": "XXXX",
+  "TWILIO_AUTH_TOKEN": "XXXX",
+  "TWILIO_PHONE_NUMBER": "XXXX",
+  "SENDGRID_API_KEY": "XXXX",
+  "SENDGRID_FROM_EMAIL": "correo@dominio.com"
+}
