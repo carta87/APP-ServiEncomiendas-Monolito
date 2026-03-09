@@ -5,13 +5,13 @@
       <div class="input-field col s6">
         <select class="browser-default" formControlName="origen" >
           <option value="" disabled selected>Seleccione el cliente origen</option>
-          <option *ngFor="let cliente of listadoClientes" value="{{cliente.nombre}} - {{cliente.apellidos}}">{{cliente.nombre}} - {{cliente.apellidos}}</option>
+          <option *ngFor="let cliente of listadoClientes" value="{{cliente.nombre}} - {{cliente.apellidos}} - {{cliente.departamento}} - {{cliente.ciudad}}">{{cliente.nombre}} - {{cliente.apellidos}} - {{cliente.departamento}} - {{cliente.ciudad}}</option>
         </select>
       </div>
       <div class="input-field col s6">
         <select class="browser-default" formControlName="destino" >
           <option value="" disabled selected>Seleccione el cliente destino</option>
-          <option *ngFor="let cliente of listadoClientes" value="{{cliente.nombre}} - {{cliente.apellidos}}">{{cliente.nombre}} - {{cliente.apellidos}}</option>
+          <option *ngFor="let cliente of listadoClientes" value="{{cliente.nombre}} - {{cliente.apellidos}} - {{cliente.departamento}} - {{cliente.ciudad}}">{{cliente.nombre}} - {{cliente.apellidos}} - {{cliente.departamento}} - {{cliente.ciudad}}</option>
         </select>
       </div>
     </div>
