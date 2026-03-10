@@ -49,6 +49,8 @@ def send_sms():
 def send_email():
     try:
         data = request.json
+        print("DATA RECIBIDA:", data)
+
         contenido = data["contenido"]
         destino = data["destino"]
         asunto = data["asunto"]
@@ -63,14 +65,20 @@ def send_email():
         sg = SendGridAPIClient(SENDGRID_API_KEY)
         response = sg.send(message)
 
-        print(response.status_code)
+        print("STATUS CODE:", response.status_code)
 
-        return {"status": "success"}
+        return {
+            "status": "success",
+            "code": response.status_code
+        }
 
     except Exception as e:
-        print(e)
-        return {"status": "error"}
-
+        print("ERROR:", str(e))
+        return {
+            "status": "error",
+            "message": str(e)
+        }, 500
+    
 
 # Ejecutar servidor
 if __name__ == '__main__':
