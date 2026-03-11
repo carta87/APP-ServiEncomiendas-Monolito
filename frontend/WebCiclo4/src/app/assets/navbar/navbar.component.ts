@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { UsuarioModel } from 'src/app/modelos/usuario.model';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 
+declare var M: any;
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -16,6 +18,8 @@ export class NavbarComponent implements OnInit {
   constructor(private seguridadService: SeguridadService) { }
 
   ngOnInit(): void {
+    const elems = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(elems);
     this.subs = this.seguridadService.datosUsuarioSesion().subscribe((data: UsuarioModel) => {
       console.log(data)
         this.activeSession = data.isLoggedIn;
