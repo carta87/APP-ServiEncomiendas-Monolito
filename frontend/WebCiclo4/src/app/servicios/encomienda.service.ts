@@ -10,7 +10,7 @@
   })
   export class EncomiendaService {
   
-    url = "http://localhost:3000"
+    url = "https://monolito-backend-serviencomiendas.onrender.com"
     token: string = ''
   
     constructor(private http: HttpClient,
