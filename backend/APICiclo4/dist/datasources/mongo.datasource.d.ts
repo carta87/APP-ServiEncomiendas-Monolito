@@ -6,12 +6,8 @@ export declare class MongoDataSource extends juggler.DataSource implements LifeC
         name: string;
         connector: string;
         url: string;
-        host: string;
-        port: number;
-        user: string;
-        password: string;
-        database: string;
         useNewUrlParser: boolean;
+        useUnifiedTopology: boolean;
     };
     constructor(dsConfig?: object);
 }

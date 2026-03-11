@@ -9,17 +9,9 @@ const config = {
     name: 'mongo',
     connector: 'mongodb',
     url: config_1.configuracion.cadenaBD,
-    host: '',
-    port: 0,
-    user: '',
-    password: '',
-    database: '',
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 };
-// Observe application's life cycle to disconnect the datasource when
-// application is stopped. This allows the application to be shut down
-// gracefully. The `stop()` method is inherited from `juggler.DataSource`.
-// Learn more at https://loopback.io/doc/en/lb4/Life-cycle.html
 let MongoDataSource = class MongoDataSource extends repository_1.juggler.DataSource {
     constructor(dsConfig = config) {
         super(dsConfig);
