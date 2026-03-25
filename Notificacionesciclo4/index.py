@@ -1,7 +1,8 @@
-from flask import Flask, request
+from flask import Flask, jsonify, request
 from twilio.rest import Client
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from flask_cors import CORS
 import os
 
 # Variables de entorno
@@ -15,9 +16,13 @@ SENDGRID_FROM_EMAIL = os.environ.get("SENDGRID_FROM_EMAIL")
 # Crear aplicación Flask
 app = Flask(__name__)
 
+CORS(app)  # 👈 HABILITA CORS 
+
 @app.route('/', methods=['GET'])
 def test():
-    return "Test microservicio notificaciones"
+    return jsonify({
+        "mensaje": "Test microservicio notificaciones"
+    })
 
 
 # Enviar SMS

@@ -10,17 +10,18 @@ import Swal from 'sweetalert2'
 })
 export class GetComponent implements OnInit {
 
-  listado: ServicioModel[] = []
+  listado: ServicioModel[] = [];
 
   constructor(private  servicioService: ServicioService) { }
 
   ngOnInit(): void {
-    this.getAll()
+    this.getAll();
   }
+
   getAll(){
     this.servicioService.getAll().subscribe((data: ServicioModel[]) => {
-      this.listado = data
-      console.log(data)
+      this.listado = data;
+      console.log(data);
     })
   }
 
@@ -35,9 +36,9 @@ export class GetComponent implements OnInit {
         this.servicioService.delete(id).subscribe((data: any) => {
           Swal.fire('¡Eliminado correctamente!', '', 'success')
           this.getAll();
-        })
+        });
       }
-    })
+    });
   }
 }
 

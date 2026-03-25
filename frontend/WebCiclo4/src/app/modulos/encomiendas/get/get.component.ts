@@ -17,6 +17,7 @@ export class GetComponent implements OnInit {
   ngOnInit(): void {
     this.getAll()
   }
+
   getAll(){
     this.encomiendaService.getAll().subscribe((data: EncomiendaModel[]) => {
       this.listado = data
@@ -35,9 +36,9 @@ export class GetComponent implements OnInit {
         this.encomiendaService.delete(id).subscribe((data: any) => {
           Swal.fire('¡Eliminado correctamente!', '', 'success')
           this.getAll();
-        })
+        });
       }
-    })
+    });
   }
 
 }

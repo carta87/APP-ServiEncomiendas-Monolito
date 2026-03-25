@@ -1,39 +1,48 @@
-<div class="container">
-  <h3 class="center-align">Registrar Encomienda</h3>
-  <form [formGroup]="fgValidacion" class="col s12" (ngSubmit)="store()">
+<div class="container form-container">
+
+  <h3 class="center-align titulo-form">Registrar Encomienda</h3>
+
+  <form [formGroup]="fgValidacion" (ngSubmit)="store()">
+
+    <!-- descripcion -->
     <div class="row">
       <div class="input-field col s12">
         <input formControlName="descripcion" type="text" class="validate" />
         <label for="descripcion">Descripcion</label>
       </div>
     </div>
+
+    <!-- peso / tipo -->
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s12 m6">
         <input formControlName="peso" type="text" class="validate" />
         <label for="peso">Peso</label>
       </div>
-      <div class="input-field col s6">
+      <div class="input-field col s12 m6">
         <input formControlName="tipo" type="text" class="validate" />
         <label for="tipo">Tipo</label>
       </div>
     </div>
+
+    <!-- detalles -->
     <div class="row">
       <div class="input-field col s12">
         <input formControlName="presentacion" type="text" class="validate" />
-        <label for="presentacion">Presentacion</label>
+        <label for="presentacion">Detalles</label>
       </div>
     </div>
 
+    <!-- botón -->
     <div class="row center-align">
       <button
         [disabled]="!fgValidacion.valid"
-        class="btn waves-effect waves-light"
+        class="btn waves-effect waves-light btn-full"
         type="submit"
-        name="action"
       >
         Enviar
         <i class="material-icons right">send</i>
       </button>
     </div>
+
   </form>
 </div>

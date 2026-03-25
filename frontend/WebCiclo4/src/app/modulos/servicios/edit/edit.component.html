@@ -1,41 +1,71 @@
-<div class="container">
-    <h3 class="center-align">Editar Servicio</h3>
-    <form [formGroup]="fgValidacion" class="col s12" (ngSubmit)="edit()">
-        <input formControlName="id" type="hidden" class="validate">
-      <div class="row">
-        <div class="input-field col s6">
-          <input formControlName="origen" type="text" class="validate" />
-          <label class="active" for="origen">Origen</label>
-        </div>
-        <div class="input-field col s6">
-          <input formControlName="destino" type="text" class="validate" />
-          <label class="active" for="destino">Destino</label>
-        </div>
+<div class="container form-container">
+  <h3 class="center-align titulo-form">Editar Servicio</h3>
+
+  <form [formGroup]="fgValidacion" (ngSubmit)="edit()">
+    <input formControlName="id" type="hidden">
+
+    <!-- fila 1 -->
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <select class="browser-default" formControlName="origen">
+          <option value="" disabled selected>Cliente origen</option>
+          <option *ngFor="let cliente of listadoClientes"
+            [value]="cliente.nombre + ' - ' + cliente.apellidos + ' - ' + cliente.departamento + ' - ' + cliente.ciudad">
+            {{cliente.nombre}} - {{cliente.apellidos}} - {{cliente.departamento}} - {{cliente.ciudad}}
+          </option>
+        </select>
       </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input formControlName="fecha" type="date" class="validate" />
-          <label class="active" for="fecha">Fecha</label>
-        </div>
-        <div class="input-field col s6">
-          <input formControlName="hora" type="text" class="validate" />
-          <label class="active" for="hora">Hora</label>
-        </div>
+      <div class="input-field col s12 m6">
+        <select class="browser-default" formControlName="destino">
+          <option value="" disabled selected>Cliente destino</option>
+          <option *ngFor="let cliente of listadoClientes"
+            [value]="cliente.nombre + ' - ' + cliente.apellidos + ' - ' + cliente.departamento + ' - ' + cliente.ciudad">
+            {{cliente.nombre}} - {{cliente.apellidos}} - {{cliente.departamento}} - {{cliente.ciudad}}
+          </option>
+        </select>
       </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input formControlName="encomienda" type="text" class="validate" />
-          <label class="active" for="encomienda">Encomienda</label>
-        </div>
-        <div class="input-field col s6">
-          <input formControlName="valor" type="number" class="validate" />
-          <label class="active" for="valor">Valor</label>
-        </div>
+    </div>
+
+    <!-- fila 2 -->
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <input formControlName="fecha" type="date" class="validate" />
+        <label class="active" for="fecha">Fecha</label>
       </div>
-      <div class="row center-align">
-        <button [disabled]="!fgValidacion.valid" class="btn waves-effect waves-light" type="submit" name="action">Editar
-          <i class="material-icons right">send</i>
-        </button>
+      <div class="input-field col s12 m6">
+        <input formControlName="hora" type="text" class="validate" />
+        <label class="active" for="hora">Hora</label>
       </div>
-    </form>
-  </div>
+    </div>
+
+    <!-- fila 3 -->
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <select class="browser-default" formControlName="encomienda">
+          <option value="" disabled selected>Seleccione la encomienda</option>
+          <option *ngFor="let encomienda of listadoEncomiendas"
+            [value]="encomienda.descripcion">
+            {{encomienda.descripcion}}
+          </option>
+        </select>
+      </div>
+      <div class="input-field col s12 m6">
+        <input formControlName="valor" type="number" class="validate" />
+        <label class="active" for="valor">Valor</label>
+      </div>
+    </div>
+
+    <!-- botón -->
+    <div class="row center-align">
+      <button
+        [disabled]="!fgValidacion.valid"
+        class="btn waves-effect waves-light btn-full"
+        type="submit"
+      >
+        Editar
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+
+  </form>
+</div>

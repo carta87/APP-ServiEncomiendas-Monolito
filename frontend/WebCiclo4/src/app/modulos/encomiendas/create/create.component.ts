@@ -16,16 +16,16 @@ export class CreateComponent implements OnInit {
     private encomiendaService: EncomiendaService,
     private router: Router) { }
 
-    fgValidacion = this.fb.group({
-      descripcion: ['', [Validators.required]],
-      peso: ['', [Validators.required]],
-      tipo: ['', [Validators.required]],
-      presentacion: ['', [Validators.required]],
-    });
-
+  fgValidacion = this.fb.group({
+    descripcion: ['', [Validators.required]],
+    peso: ['', [Validators.required]],
+    tipo: ['', [Validators.required]],
+    presentacion: ['', [Validators.required]],
+  });
 
   ngOnInit(): void {
   }
+
   store(){
     let  encomienda = new EncomiendaModel();
     encomienda.descripcion = this.fgValidacion.controls["descripcion"].value as string;
@@ -38,9 +38,9 @@ export class CreateComponent implements OnInit {
       this.router.navigate(['/encomiendas/get']);
     },
     (error: any) => {
-      console.log(error )
+      console.log(error);
       alert("Error en el envio");
-    })
+    });
   }
 
 }

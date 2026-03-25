@@ -21,13 +21,13 @@ export class EditComponent implements OnInit {
     let id = this.route.snapshot.params["id"]
     this.getWithId(id)
   }
+
   fgValidacion = this.fb.group({
     id: ['', [Validators.required]],
     descripcion: ['', [Validators.required]],
     peso: ['', [Validators.required]],
     tipo: ['', [Validators.required]],
     presentacion: ['', [Validators.required]],
-    
   });
 
   getWithId(id: string){
@@ -49,8 +49,6 @@ export class EditComponent implements OnInit {
     encomienda.tipo = this.fgValidacion.controls["tipo"].value as string;
     encomienda.presentacion = this.fgValidacion.controls["presentacion"].value as string;
     
-    
- 
     this.encomiendaService.update(encomienda).subscribe((data: EncomiendaModel)=> {
       Swal.fire('Editado Correctamente!', '', 'success')
       this.router.navigate(['/encomiendas/get']);
@@ -58,7 +56,7 @@ export class EditComponent implements OnInit {
     (error: any) => {
       console.log(error)
       alert("Error en el envio");
-    })
+    });
   }
 
 }

@@ -17,28 +17,28 @@ export class EditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) { }
 
-    fgValidacion = this.fb.group({
-      id: ['', [Validators.required]],
-      nombre: ['', [Validators.required]],
-      apellidos: ['', [Validators.required]],
-      telefono: ['', [Validators.required, Validators.minLength(6)]],
-      correo: ['', [Validators.required, Validators.email]],
-    });
-  
-    getWithId(id: string){
-      this.usuarioService.getWithId(id).subscribe((data: UsuarioModel) => {
-        console.log(data)
-        this.fgValidacion.controls["id"].setValue(id)
-        this.fgValidacion.controls["nombre"].setValue(data.nombre as string)
-        this.fgValidacion.controls["apellidos"].setValue(data.apellidos as string)
-        this.fgValidacion.controls["correo"].setValue(data.correo as string)
-        this.fgValidacion.controls["telefono"].setValue(data.telefono as string)
-      })
-    }
+  fgValidacion = this.fb.group({
+    id: ['', [Validators.required]],
+    nombre: ['', [Validators.required]],
+    apellidos: ['', [Validators.required]],
+    telefono: ['', [Validators.required, Validators.minLength(6)]],
+    correo: ['', [Validators.required, Validators.email]],
+  });
 
   ngOnInit(): void {
     let id = this.route.snapshot.params["id"]
     this.getWithId(id)
+  }
+
+  getWithId(id: string){
+    this.usuarioService.getWithId(id).subscribe((data: UsuarioModel) => {
+      console.log(data)
+      this.fgValidacion.controls["id"].setValue(id)
+      this.fgValidacion.controls["nombre"].setValue(data.nombre as string)
+      this.fgValidacion.controls["apellidos"].setValue(data.apellidos as string)
+      this.fgValidacion.controls["correo"].setValue(data.correo as string)
+      this.fgValidacion.controls["telefono"].setValue(data.telefono as string)
+    })
   }
 
   edit(){
@@ -56,7 +56,7 @@ export class EditComponent implements OnInit {
     (error: any) => {
       console.log(error)
       alert("Error en el envio");
-    })
+    });
   }
 
 }

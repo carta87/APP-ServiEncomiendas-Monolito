@@ -1,0 +1,35 @@
+/* contenedor centrado */
+.form-container{
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* título responsive */
+.titulo-form{
+  font-size: clamp(20px, 4vw, 32px);
+  margin-bottom: 20px;
+}
+
+/* separación entre filas */
+.row{
+  margin-bottom: 8px;
+}
+
+/* botón adaptable */
+.btn-full{
+  width: auto;
+}
+
+/* 📱 móvil */
+@media (max-width: 600px){
+
+  .btn-full{
+    width: 100%; /* botón ocupa todo */
+  }
+
+  .titulo-form{
+    font-size: 22px;
+  }
+
+}

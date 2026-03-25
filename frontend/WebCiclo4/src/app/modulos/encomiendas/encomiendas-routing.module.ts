@@ -6,7 +6,6 @@ import { GetComponent } from './get/get.component';
 import { SessionGuard } from 'src/app/guards/session.guard';
 
 const routes: Routes = [
-
   {
     path: 'create',
     canActivate: [SessionGuard],

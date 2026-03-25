@@ -35,8 +35,8 @@ export class GetComponent implements OnInit {
         this.clienteService.delete(id).subscribe((data: any) => {
           Swal.fire('¡Eliminado correctamente!', '', 'success')
           this.getAll();
-        })
+        });
       }
-    })
+    });
   }
 }

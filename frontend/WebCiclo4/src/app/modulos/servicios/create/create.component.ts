@@ -22,18 +22,17 @@ export class CreateComponent implements OnInit {
     private clienteService: ClienteService,
     private encomiendaService: EncomiendaService) { }
 
-    listadoClientes: ClienteModel[] = []
-    listadoEncomiendas: EncomiendaModel[] = []
+  listadoClientes: ClienteModel[] = [];
+  listadoEncomiendas: EncomiendaModel[] = [];
 
-    fgValidacion = this.fb.group({
-      origen: ['', [Validators.required]],
-      destino: ['', [Validators.required]],
-      fecha: ['', [Validators.required]],
-      hora: ['', [Validators.required]],
-      encomienda: ['', [Validators.required]],
-      valor: ['', [Validators.required]],
-    });
-
+  fgValidacion = this.fb.group({
+    origen: ['', [Validators.required]],
+    destino: ['', [Validators.required]],
+    fecha: ['', [Validators.required]],
+    hora: ['', [Validators.required]],
+    encomienda: ['', [Validators.required]],
+    valor: ['', [Validators.required]],
+  });
 
   ngOnInit(): void {
     this.getEncomiendas();
@@ -55,22 +54,22 @@ export class CreateComponent implements OnInit {
       this.router.navigate(['/servicios/get']);
     },
     (error: any) => {
-      console.log()
+      console.log();
       alert("Error en el envio");
     })
   }
 
   getEncomiendas(){
     this.encomiendaService.getAll().subscribe((data: EncomiendaModel[]) => {
-      this.listadoEncomiendas = data
-      console.log(data)
+      this.listadoEncomiendas = data;
+      console.log(data);
     })
   }
 
   getClientes(){
     this.clienteService.getAll().subscribe((data: ClienteModel[]) => {
-      this.listadoClientes = data
-      console.log(data)
+      this.listadoClientes = data;
+      console.log(data);
     })
   }
 

@@ -21,7 +21,7 @@ export class GetComponent implements OnInit {
   getAll(){
     this.usuarioService.getAll().subscribe((data: UsuarioModel[]) => {
       this.listado = data
-      console.log(data)
+      console.log(data);
     })
   }
 
@@ -36,9 +36,9 @@ export class GetComponent implements OnInit {
         this.usuarioService.delete(id).subscribe((data: any) => {
           Swal.fire('¡Eliminado correctamente!', '', 'success')
           this.getAll();
-        })
+        });
       }
-    })
+    });
   }
 
 }

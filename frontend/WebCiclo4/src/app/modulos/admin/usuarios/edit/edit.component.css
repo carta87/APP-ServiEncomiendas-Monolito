@@ -1,0 +1,13 @@
+.form-container{
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+.titulo-form{
+  font-size: clamp(20px, 4vw, 34px);
+}
+
+.row{
+  margin-bottom: 5px;
+}

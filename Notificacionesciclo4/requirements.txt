@@ -1,4 +1,5 @@
 Flask
 twilio
 sendgrid
+flask-cors
 gunicorn

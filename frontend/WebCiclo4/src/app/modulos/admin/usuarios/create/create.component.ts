@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioModel } from 'src/app/modelos/usuario.model';
+import { NotificacionesEmail } from 'src/app/servicios/notificaionesEmail.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import Swal from 'sweetalert2'
 
@@ -14,16 +15,18 @@ export class CreateComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private usuarioService: UsuarioService,
+    private notificacionesEmail : NotificacionesEmail,
     private router: Router) { }
 
-    fgValidacion = this.fb.group({
-      nombre: ['', [Validators.required]],
-      apellidos: ['', [Validators.required]],
-      telefono: ['', [Validators.required, Validators.minLength(6)]],
-      correo: ['', [Validators.required, Validators.email]],
-    });
+  fgValidacion = this.fb.group({
+    nombre: ['', [Validators.required]],
+    apellidos: ['', [Validators.required]],
+    telefono: ['', [Validators.required, Validators.minLength(6)]],
+    correo: ['', [Validators.required, Validators.email]],
+  });
 
   ngOnInit(): void {
+     this.activeNotification();
   }
 
   store(){
@@ -33,6 +36,19 @@ export class CreateComponent implements OnInit {
     usuario.correo = this.fgValidacion.controls["correo"].value as string;
     usuario.telefono = this.fgValidacion.controls["telefono"].value as string;
  
+    let loadingShown = false;
+
+    // 🔵 MENSAJE DE CARGA
+    Swal.fire({
+      title: 'Procesando solicitud',
+      text: 'Generando comprobante, por favor espere...',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didOpen: () => {
+        Swal.showLoading(null);
+      }
+    });
+
     this.usuarioService.store(usuario).subscribe((data: UsuarioModel)=> {
       Swal.fire('Creado correctamente!', '', 'success')
       this.router.navigate(['/admin/get']);
@@ -43,4 +59,17 @@ export class CreateComponent implements OnInit {
     })
   }
 
+  activeNotification(){
+    this.notificacionesEmail.getActiveNotification().subscribe((data: any) => {
+      console.log(data);
+      if(data.active){
+        Swal.fire({
+          title: 'Notificación activa',
+          text: data.message,
+          icon: 'info',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
+  }
 }

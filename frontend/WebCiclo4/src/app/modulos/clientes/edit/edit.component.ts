@@ -38,18 +38,17 @@ export class EditComponent implements OnInit {
   getWithId(id: string){
     this.clienteService.getWithId(id).subscribe((data: ClienteModel) => {
       console.log(data)
-      this.fgValidacion.controls["id"].setValue(id)
-      this.fgValidacion.controls["cedula"].setValue(data.cedula as string)
-      this.fgValidacion.controls["nombre"].setValue(data.nombre as string)
-      this.fgValidacion.controls["apellidos"].setValue(data.apellidos as string)
-      this.fgValidacion.controls["pais"].setValue(data.pais as string)
-      this.fgValidacion.controls["ciudad"].setValue(data.ciudad as string)
-      this.fgValidacion.controls["departamento"].setValue(data.departamento as string)
-      this.fgValidacion.controls["direccion"].setValue(data.direccion as string)
-      this.fgValidacion.controls["telefono"].setValue(data.telefono as string)
-      this.fgValidacion.controls["email"].setValue(data.email as string)
-      
-    })
+      this.fgValidacion.controls["id"].setValue(id);
+      this.fgValidacion.controls["cedula"].setValue(data.cedula as string);
+      this.fgValidacion.controls["nombre"].setValue(data.nombre as string);
+      this.fgValidacion.controls["apellidos"].setValue(data.apellidos as string);
+      this.fgValidacion.controls["pais"].setValue(data.pais as string);
+      this.fgValidacion.controls["ciudad"].setValue(data.ciudad as string);
+      this.fgValidacion.controls["departamento"].setValue(data.departamento as string);
+      this.fgValidacion.controls["direccion"].setValue(data.direccion as string);
+      this.fgValidacion.controls["telefono"].setValue(data.telefono as string);
+      this.fgValidacion.controls["email"].setValue(data.email as string);
+    });
   }
 
   edit(){
@@ -65,7 +64,6 @@ export class EditComponent implements OnInit {
     cliente.telefono = this.fgValidacion.controls["telefono"].value as string;
     cliente.email = this.fgValidacion.controls["email"].value as string;
     
- 
     this.clienteService.update(cliente).subscribe((data: ClienteModel)=> {
       Swal.fire('Editado Correctamente!', '', 'success')
       this.router.navigate(['/admin/get']);
@@ -73,7 +71,7 @@ export class EditComponent implements OnInit {
     (error: any) => {
       console.log(error)
       alert("Error en el envio");
-    })
+    });
   }
 
 }

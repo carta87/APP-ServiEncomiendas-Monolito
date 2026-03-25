@@ -1,0 +1,9 @@
+.form-container{
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.titulo-form{
+  font-size: clamp(20px, 4vw, 34px);
+}

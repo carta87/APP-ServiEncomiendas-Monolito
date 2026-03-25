@@ -16,5 +16,5 @@ COPY . .
 # Puerto del contenedor
 EXPOSE 5000
 
-# Comando para ejecutar la app
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "index:app"]
+# Ejecutar con timeout configurado
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--timeout", "120", "--keep-alive", "5", "index:app"]

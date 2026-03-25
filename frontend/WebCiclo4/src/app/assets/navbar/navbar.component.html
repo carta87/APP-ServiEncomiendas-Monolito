@@ -10,35 +10,27 @@
 
     <!-- Menú escritorio -->
     <ul class="right hide-on-med-and-down">
-
       <li *ngIf="activeSession">
         <a routerLink="clientes/get">Clientes</a>
       </li>
-
       <li *ngIf="activeSession">
         <a routerLink="encomiendas/get">Encomiendas</a>
       </li>
-
       <li *ngIf="activeSession">
         <a routerLink="servicios/get">Servicios</a>
       </li>
-
       <li *ngIf="activeSession">
         <a routerLink="admin/get">Usuarios</a>
       </li>
-
       <li *ngIf="!activeSession">
         <a routerLink="/admin/create">Registrarse</a>
       </li>
-
       <li *ngIf="!activeSession">
         <a routerLink="/seguridad/login">Login</a>
       </li>
-
       <li *ngIf="activeSession">
         <a routerLink="/seguridad/logout">Cerrar Sesión</a>
       </li>
-
     </ul>
 
   </div>
@@ -46,33 +38,25 @@
 
 <!-- Menú móvil -->
 <ul class="sidenav" id="mobile-demo">
-
   <li *ngIf="activeSession">
     <a routerLink="clientes/get">Clientes</a>
   </li>
-
   <li *ngIf="activeSession">
     <a routerLink="encomiendas/get">Encomiendas</a>
   </li>
-
   <li *ngIf="activeSession">
     <a routerLink="servicios/get">Servicios</a>
   </li>
-
   <li *ngIf="activeSession">
     <a routerLink="admin/get">Usuarios</a>
   </li>
-
   <li *ngIf="!activeSession">
     <a routerLink="/admin/create">Registrarse</a>
   </li>
-
   <li *ngIf="!activeSession">
     <a routerLink="/seguridad/login">Login</a>
   </li>
-
   <li *ngIf="activeSession">
     <a routerLink="/seguridad/logout">Cerrar Sesión</a>
   </li>
-
 </ul>

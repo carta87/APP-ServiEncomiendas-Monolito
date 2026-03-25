@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClienteModel } from 'src/app/modelos/cliente.model'; 
 import { ClienteService } from 'src/app/servicios/cliente.service'; 
+import { NotificacionesEmail } from 'src/app/servicios/notificaionesEmail.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -14,21 +15,23 @@ export class CreateComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private clienteService : ClienteService,
+    private notificacionesEmail : NotificacionesEmail,
     private router: Router) { }
 
-    fgValidacion = this.fb.group({
-      cedula: ['', [Validators.required]],
-      nombre: ['', [Validators.required]],
-      apellidos: ['', [Validators.required]],
-      pais: ['', [Validators.required]],
-      ciudad: ['', [Validators.required]],
-      departamento: ['', [Validators.required]],
-      direccion: ['', [Validators.required]],
-      telefono: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', [Validators.required, Validators.email]],
-    });
+  fgValidacion = this.fb.group({
+    cedula: ['', [Validators.required]],
+    nombre: ['', [Validators.required]],
+    apellidos: ['', [Validators.required]],
+    pais: ['', [Validators.required]],
+    ciudad: ['', [Validators.required]],
+    departamento: ['', [Validators.required]],
+    direccion: ['', [Validators.required]],
+    telefono: ['', [Validators.required, Validators.minLength(6)]],
+    email: ['', [Validators.required, Validators.email]],
+  });
 
   ngOnInit(): void {
+    this.activeNotification();
   }
 
   store(){
@@ -50,6 +53,20 @@ export class CreateComponent implements OnInit {
     (error: any) => {
       console.log(error)
       alert("Error en el envio");
-    })
+    });
+  }
+
+  activeNotification(){
+    this.notificacionesEmail.getActiveNotification().subscribe((data: any) => {
+      console.log(data);
+      if(data.active){
+        Swal.fire({
+          title: 'Notificación activa',
+          text: data.message,
+          icon: 'info',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
   }
 }

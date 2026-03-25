@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UsuarioModel } from '../modelos/usuario.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeguridadService {
 
-  url = "https://monolito-backend-serviencomiendas.onrender.com";
   sessionUserData = new BehaviorSubject<UsuarioModel>(new UsuarioModel());
 
   constructor(private http: HttpClient) { 
@@ -17,12 +17,11 @@ export class SeguridadService {
   
   login(correo: string, clave: string): Observable<any> {
     //Hacemos la solicitud al servicio web de login pasandole usuario y clave
-    return this.http.post<any>(`${this.url}/login`, {
+    return this.http.post<any>(`${environment.urlBackend}/login`, {
       usuario: correo,
       password: clave
     }, {
       headers: new HttpHeaders({
-  
       })
     });
   }

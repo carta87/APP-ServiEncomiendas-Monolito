@@ -1,32 +1,47 @@
-<div class="container">
-  <br />
-  <a routerLink="/encomiendas/create" class="btn">Registrar Encomienda</a>
+<div class="container margin-zona">
+  <br>
+  <div >
+    <a routerLink="/encomiendas/create" class="btn btn-crear">
+      Registrar Encomienda
+    </a>
+  </div>
 
-  <table class="table responsive">
-    <thead>
-      <tr>
-        <th>Descripcion</th>
-        <th>Peso</th>
-        <th>Tipo</th>
-        <th>Presentacion</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let encomienda of listado">
-        <td>{{ encomienda.descripcion }}</td>
-        <td>{{ encomienda.peso }}</td>
-        <td>{{ encomienda.tipo }}</td>
-        <td>{{ encomienda.presentacion }}</td>
-        <td>
-          <a routerLink="/encomiendas/edit/{{ encomienda.id }}" class="btn">
-            <i class="material-icons">edit</i>
-          </a>
-          <button class="btn red" (click)="delete(encomienda.id)">
-            <i class="material-icons">delete</i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table class="table responsive">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Descripcion</th>
+          <th>Peso</th>
+          <th>Tipo</th>
+          <th>Detalles</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let encomienda of listado; let i = index">
+          <td><strong>{{ i + 1 }}</strong></td>
+          <td>{{ encomienda.descripcion }}</td>
+          <td>{{ encomienda.peso }}</td>
+          <td>{{ encomienda.tipo }}</td>
+          <td>{{ encomienda.presentacion }}</td>
+          <td>
+            <a
+              routerLink="/encomiendas/edit/{{ encomienda.id }}"
+              class="btn btn-standar button-spacing"
+            >
+              <i class="material-icons">edit</i>
+            </a>
+            <button
+              class="btn red btn-standar"
+              (click)="delete(encomienda.id)"
+            >
+              <i class="material-icons">delete</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>

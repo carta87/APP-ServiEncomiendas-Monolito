@@ -1,0 +1,35 @@
+.page-footer {
+  padding-top: 3px; /* antes es como 20-40px */
+}
+
+.page-footer .row {
+  margin-bottom: 5px; /* reduce espacio vertical */
+}
+
+.page-footer h5 {
+  font-size: 1.2rem; /* más pequeño */
+  margin-bottom: 5px;
+}
+
+.page-footer p,
+.page-footer a {
+  font-size: 0.9rem;
+}
+
+.footer-copyright {
+  padding: 8px 0; /* reduce altura inferior */
+  font-size: 0.8rem;
+}
+
+/* responsive extra */
+@media (max-width: 600px) {
+  .page-footer {
+    text-align: center;
+  }
+
+  .footer-copyright a {
+    float: none !important;
+    display: block;
+    margin-top: 5px;
+  }
+}

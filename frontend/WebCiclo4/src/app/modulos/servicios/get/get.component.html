@@ -1,35 +1,47 @@
-<div class="container">
-  <br />
-  <a routerLink="/servicios/create" class="btn">Registrar Servicio</a>
+<div class="margin-zona">
+  <a routerLink="/servicios/create" class="btn btn-crear">
+    Registrar Servicio
+  </a>
+  <div class="table-container">
+    <table class="responsive table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Encomienda</th>
+          <th>Valor</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servicio of listado; let i = index">
+          <td><strong>{{ i + 1 }}</strong></td>
+          <td>{{ servicio.origen }}</td>
+          <td>{{ servicio.destino }}</td>
+          <td>{{ servicio.fecha }}</td>
+          <td>{{ servicio.hora }}</td>
+          <td>{{ servicio.encomienda }}</td>
+          <td>{{ servicio.valor }}</td>
+          <td>
+            <a
+              routerLink="/servicios/edit/{{ servicio.id }}"
+              class="btn btn-standar button-spacing"
+            >
+              <i class="material-icons">edit</i>
+            </a>
+            <button
+              class="btn red btn-standar"
+              (click)="delete(servicio.id)"
+            >
+              <i class="material-icons">delete</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
 
-  <table class="table responsive">
-    <thead>
-      <tr>
-        <th>Origen</th>
-        <th>Destino</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Encomienda</th>
-        <th>Valor</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let servicio of listado">
-        <td>{{ servicio.origen }}</td>
-        <td>{{ servicio.destino }}</td>
-        <td>{{ servicio.fecha }}</td>
-        <td>{{ servicio.hora }}</td>
-        <td>{{ servicio.encomienda }}</td>
-        <td>{{ servicio.valor }}</td>
-        <td>
-          <a routerLink="/servicios/edit/{{ servicio.id }}" class="btn">
-            <i class="material-icons">edit</i></a>
-          <button class="btn red" (click)="delete(servicio.id)">
-            <i class="material-icons">delete</i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    </table>
+  </div>
 </div>
